@@ -2,6 +2,8 @@ package br.com.linkdata.myApp.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +22,13 @@ public class FuncionarioService {
 
 	public List<Funcionario> getFuncionarios(Integer codigo) {
 		return funcionarioRepository.findByEmpresa(codigo);
+	}
+
+	public void salvar(@Valid Funcionario funcionario) {
+		funcionarioRepository.saveAndFlush(funcionario);
+	}
+
+	public void deleta(Integer codigo) {
+		funcionarioRepository.deleteById(codigo);
 	}
 }

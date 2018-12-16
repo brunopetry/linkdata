@@ -66,7 +66,7 @@
 			      <th scope="col">Id</th>
 			      <th scope="col">Nome</th>
 			      <th scope="col">CNPJ</th>
-			      <th scope="col">Funcionarios</th>
+			      <th scope="col">Funcionários</th>
 			      <th scope="col">Ações</th>
 			    </tr>
 			  </thead>
@@ -91,37 +91,6 @@
 			  </tbody>
 			</table>
             
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="funcionarios" class="bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-          <h2>Funcionários</h2>
-            <br/>
-            <table class="table table-striped">
-			  <thead>
-			    <tr>
-			      <th scope="col">Id</th>
-			      <th scope="col">Nome</th>
-			      <th scope="col">CPF</th>
-			      <th scope="col">Email</th>
-			      <th scope="col">Empresa</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-				  <tr th:each="funcionario : ${funcionarios}">
-		            <td th:text="${funcionario.codigo}"></td>
-					<td th:text="${funcionario.nome}"></td>
-					<td th:text="${funcionario.cpf}"></td>
-					<td th:text="${funcionario.email}"></td>
-					<td th:text="${funcionario.empresa.nome}"></td>
-		          </tr>
-			  </tbody>
-			</table>
           </div>
         </div>
       </div>

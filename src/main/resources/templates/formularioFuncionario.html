@@ -54,13 +54,14 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
           	<div class="">
-				<strong>Cadastro de Empresa</strong>
+				<strong>Cadastro de Funcionario</strong>
 			</div>
-            <form class="form-horizontal" th:object="${funcionario}" th:action="@{/salvarFuncionario}" method="POST" style="margin: 10px">
+            <form class="form-horizontal" th:object="${funcionario}" th:action="@{/salvarFuncionario/{codigoEmpresa}(codigoEmpresa=${codigoEmpresa})}" method="POST" style="margin: 10px">
 				<div class="form-group">
  					<fieldset>
 						<div class="form-group row">
 						    <div class="col-lg-2">
+						    	<label>Código</label> 
 						        <input type="text" class="form-control input-sm" id="codigo" th:field="*{codigo}" readOnly="readonly"/>
 						    </div>
 						 </div>
@@ -85,14 +86,17 @@
 						<div class="form-group row">
 							<div class="col-lg-4" th:classappend="${#fields.hasErrors('empresa')}? 'has-error'">
 								<label>Empresa</label> 
-								<input type="email" class="form-control input-sm" th:field="*{empresa}" placeholder="Informe o empresa" maxlength="100" required="required"/>
+								<select th:field="*{empresa}" class="form-control" required="required">
+									<option th:value="null" th:text="Selecione"></option>
+								    <option th:each="empresa : ${empresas}" th:value="${empresa.codigo}" th:text="${empresa.nome}"></option>
+								</select>
 							</div>
 						</div>
 					</fieldset>
 				</div>
 				<div class="form-group row">
 					<button type="submit" class="btn btn-sm btn-primary">Salvar</button>
-					<a th:href="@{/}" class="btn btn-sm btn-default">Cancelar</a>
+					<a th:href="@{/funcionarios/{codigoEmpresa}(codigoEmpresa=${codigoEmpresa})}" class="btn btn-sm btn-default">Cancelar</a>
 				</div>
 			</form>
             

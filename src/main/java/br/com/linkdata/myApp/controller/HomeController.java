@@ -28,15 +28,15 @@ public class HomeController {
 
 	@GetMapping("/")
 	public ModelAndView home() {
-		ModelAndView model = new ModelAndView("home");
+		ModelAndView mv = new ModelAndView("home");
 		List<Empresa> empresas = empresaService.getEmpresas();
-		model.addObject("empresas", empresas);
+		mv.addObject("empresas", empresas);
 
 		List<Funcionario> funcionarios = funcionarioService.getFuncionarios(empresas.get(0).getCodigo());
-		model.addObject("funcionarios", funcionarios);
-		return model;
+		mv.addObject("funcionarios", funcionarios);
+		return mv;
 	}
-	
+
 	@GetMapping("/novaEmpresa")
 	public ModelAndView novaEmpresa(Empresa empresa) {
 
@@ -71,15 +71,58 @@ public class HomeController {
 
 		return home();
 	}
-	
+
 	@GetMapping("/funcionarios/{codigoEmpresa}")
 	public ModelAndView funcionarios(@PathVariable("codigoEmpresa") Integer codigoEmpresa) {
-		
-		ModelAndView model = new ModelAndView("funcionarios");
+
+		ModelAndView mv = new ModelAndView("funcionarios");
 		List<Funcionario> funcionarios = funcionarioService.getFuncionarios(codigoEmpresa);
-		model.addObject("funcionarios", funcionarios);
-		
-		return model;
+		mv.addObject("funcionarios", funcionarios);
+		mv.addObject("codigoEmpresa", codigoEmpresa);
+
+		return mv;
+	}
+
+	@GetMapping("/novoFuncionario/{codigoEmpresa}")
+	public ModelAndView novoFuncionario(@PathVariable("codigoEmpresa") Integer codigoEmpresa, Funcionario funcionario) {
+
+		ModelAndView mv = new ModelAndView("/formularioFuncionario");
+		mv.addObject("funcionario", funcionario);
+		mv.addObject("codigoEmpresa", codigoEmpresa);
+		mv.addObject("empresas", empresaService.getEmpresas());
+
+		return mv;
+	}
+
+	@PostMapping("/salvarFuncionario/{codigoEmpresa}")
+	public ModelAndView salvarFuncionario(@PathVariable("codigoEmpresa") Integer codigoEmpresa,
+			@Valid Funcionario funcionario, BindingResult result) {
+
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("codigoEmpresa", codigoEmpresa);
+		if (result.hasErrors()) {
+			return novoFuncionario(codigoEmpresa, funcionario);
+		}
+
+		funcionarioService.salvar(funcionario);
+
+		return funcionarios(codigoEmpresa);
+	}
+
+	@GetMapping("/editarFuncionario/{codigo}/{codigoEmpresa}")
+	public ModelAndView editarFuncionario(@PathVariable("codigo") Integer codigo,
+			@PathVariable("codigoEmpresa") Integer codigoEmpresa) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("codigoEmpresa", codigoEmpresa);
+		return novoFuncionario(codigoEmpresa, funcionarioService.getFuncionario(codigo));
+	}
+
+	@GetMapping("/deletaFuncionario/{codigo}/{codigoEmpresa}")
+	public ModelAndView deletaFuncionario(@PathVariable("codigo") Integer codigo,@PathVariable("codigoEmpresa") Integer codigoEmpresa) {
+
+		funcionarioService.deleta(codigo);
+
+		return funcionarios(codigoEmpresa);
 	}
 
 }

@@ -56,6 +56,10 @@
           <div class="col-lg-8 mx-auto">
           <h2>Funcionários</h2>
             <br/>
+            <div class="" style="float: right; margin-bottom: 5px">
+				<a class="btn btn-sm btn-success" th:href="@{/novoFuncionario/{codigoEmpresa}(codigoEmpresa=${codigoEmpresa})}" >Adicionar</a>
+			</div>
+			<br/>
             <table class="table table-striped">
 			  <thead>
 			    <tr>
@@ -64,6 +68,7 @@
 			      <th scope="col">CPF</th>
 			      <th scope="col">Email</th>
 			      <th scope="col">Empresa</th>
+			      <th scope="col">Ações</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -75,8 +80,8 @@
 					<td th:text="${funcionario.empresa.nome}"></td>
 					<td>
 					<div class="btn-group pull-right">
-				   		<a class="btn btn-sm btn-primary" th:href="@{/editarFuncionario/{codigo}(codigo=${funcionario.codigo})}" >Editar</a>
-				   		<a class="delete btn btn-sm btn-danger" th:href="@{/deletaFuncionario/{codigo}(codigo=${funcionario.codigo})}" >Excluir</a>
+				   		<a class="btn btn-sm btn-primary" th:href="@{/editarFuncionario/{codigo}/{codigoEmpresa}(codigo=${funcionario.codigo},codigoEmpresa=${codigoEmpresa})}" >Editar</a>
+				   		<a class="delete btn btn-sm btn-danger" th:href="@{/deletaFuncionario/{codigo}/{codigoEmpresa}(codigo=${funcionario.codigo},codigoEmpresa=${codigoEmpresa})}" >Excluir</a>
 				   </div>
 		          </tr>
 			  </tbody>
