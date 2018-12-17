@@ -26,8 +26,8 @@ public class Funcionario {
 	@Column(nullable = false, length = 100)
 	private String email;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "codigo_empresa", nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "codigo_empresa", referencedColumnName = "codigo", nullable = false)
 	private Empresa empresa;
 
 	public Funcionario() {

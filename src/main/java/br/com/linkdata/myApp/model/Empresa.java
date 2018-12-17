@@ -25,7 +25,7 @@ public class Empresa {
 	@Column(nullable = false, length = 100)
 	private String nome;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "codigo")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
 	private List<Funcionario> funcionarios;
 
 	public Empresa() {

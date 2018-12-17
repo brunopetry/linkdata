@@ -32,8 +32,8 @@ public class HomeController {
 		List<Empresa> empresas = empresaService.getEmpresas();
 		mv.addObject("empresas", empresas);
 
-		List<Funcionario> funcionarios = funcionarioService.getFuncionarios(empresas.get(0).getCodigo());
-		mv.addObject("funcionarios", funcionarios);
+//		List<Funcionario> funcionarios = funcionarioService.getFuncionarios(empresas.get(0).getCodigo());
+//		mv.addObject("funcionarios", funcionarios);
 		return mv;
 	}
 
@@ -89,7 +89,10 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("/formularioFuncionario");
 		mv.addObject("funcionario", funcionario);
 		mv.addObject("codigoEmpresa", codigoEmpresa);
-		mv.addObject("empresas", empresaService.getEmpresas());
+		
+		funcionario.setEmpresa(empresaService.getEmpresa(codigoEmpresa));
+		
+//		mv.addObject("empresas", empresaService.getEmpresas());
 
 		return mv;
 	}
