@@ -1,16 +1,7 @@
 package br.com.linkdata.myApp;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import br.com.linkdata.myApp.model.Empresa;
-import br.com.linkdata.myApp.service.EmpresaService;
 
 @SpringBootApplication
 public class MyAppApplication 
@@ -18,7 +9,7 @@ public class MyAppApplication
 {
 
 //	@Autowired
-//	EmpresaService empresaService;
+//	public EmpresaService empresaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MyAppApplication.class, args);
@@ -34,10 +25,14 @@ public class MyAppApplication
 
 //	@Override
 //	public void run(String... args) throws Exception {
-//		System.out.println(">>>>>>>>>>>>>> bruno");
-//		Empresa e = empresaService.getEmpresa(1);
-//		System.out.println(e);
-//
+//		try{
+//			List<Empresa> empresas = empresaService.getEmpresas();
+//			EmpresaREL relatorio = new EmpresaREL();
+//			relatorio.imprimir(empresas);
+//		}
+//		catch(Exception e){
+//			System.out.println(e.getMessage());
+//		}
 //	}
 
 }

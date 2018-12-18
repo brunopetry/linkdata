@@ -55,6 +55,14 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Empresa</h2>
+            <form method="post" th:action="@{/exportarEmpresas}">
+		      	<button type="submit" class="btn btn-info" >Export</button>
+		     </form>
+		     
+<!-- 		     <div class="btn-group pull-right"> -->
+<!-- 		   		<a class="btn btn-sm btn-primary" th:href="@{/export}">Export</a> -->
+<!-- 		     </div> -->
+            
             <br/>
             <div class="" style="float: right; margin-bottom: 5px">
 				<a class="btn btn-sm btn-success" th:href="@{/novaEmpresa/}" >Adicionar</a>

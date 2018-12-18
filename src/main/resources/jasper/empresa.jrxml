@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="empresa" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ad31008-c5f1-4086-b25f-d050dfd2cc36">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="d8a7f4c4-255f-42e1-ba28-a0bb62b5c0c8"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\bruno.petry\\Documents\\linkdata\\worksapce\\linkdata\\src\\main\\resources\\jasper\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="nome" class="java.lang.String"/>
+	<field name="cnpj" class="java.lang.String"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="funcionarios" class="java.util.Collection"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="36" y="26" width="519" height="31" uuid="8cad6de8-0aab-48a7-96c1-319269435c01"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Relatório de Empresas]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="445" y="0" width="72" height="20" uuid="01332958-b739-4ddd-8436-77619727e71e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm">
+				<reportElement x="517" y="0" width="38" height="20" uuid="56d4356c-b093-4330-bf14-5f7600361499"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="107" y="0" width="208" height="20" uuid="a21c80b7-8a20-4e7f-84f2-55bd2ab8eb7a"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="0" width="71" height="20" uuid="259379bc-2058-4a11-b2da-4fb08ef8c052"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="0" width="100" height="20" uuid="efd6b18b-b9f9-4f1f-9dd4-b2bbcc86c172"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cnpj]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="2" width="100" height="20" uuid="7f7aa22f-77b0-4459-8f21-8b3d2d4a08af"/>
+				<text><![CDATA[funcionarios]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="126" splitType="Stretch">
+			<textField pattern="">
+				<reportElement x="315" y="0" width="100" height="20" uuid="a83d4aa1-1775-4892-a597-160c0089e210"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cnpj}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="107" y="0" width="208" height="20" uuid="dd8eca09-623f-422d-a685-c758ca70e218"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="0" width="71" height="20" uuid="a1a25847-da14-44bd-ba78-d13396e5a30f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="36" y="20" width="491" height="56" uuid="02791870-ef50-47bb-be7b-aad2ea59aac3"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "funcionarios.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="36" y="89" width="443" height="20" uuid="bfe47e8a-550a-4d66-9d36-bbbeeddb4dca"/>
+				<textFieldExpression><![CDATA[""+$F{funcionarios}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="445" y="34" width="72" height="20" uuid="54afcdea-93f0-4b2a-90c4-9ec19ae38b3f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="517" y="34" width="40" height="20" uuid="d1bcbec9-9879-492f-ab47-f8d36ab8499b"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

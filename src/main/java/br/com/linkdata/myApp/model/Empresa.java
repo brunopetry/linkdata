@@ -25,7 +25,7 @@ public class Empresa {
 	@Column(nullable = false, length = 100)
 	private String nome;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "codigo")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "empresa")
 	private List<Funcionario> funcionarios;
 
 	public Empresa() {
@@ -53,6 +53,14 @@ public class Empresa {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
 	}
 
 	@Override
