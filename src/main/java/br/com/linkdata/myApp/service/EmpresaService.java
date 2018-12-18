@@ -15,11 +15,11 @@ public class EmpresaService {
 
 	@Autowired
 	private EmpresaRepository empresaRepository;
-	
+
 	public Empresa getEmpresa(int codigo) {
 		return empresaRepository.findById(codigo).get();
 	}
-	
+
 	public List<Empresa> getEmpresas() {
 		return empresaRepository.findAll();
 	}
@@ -31,4 +31,5 @@ public class EmpresaService {
 	public void deleta(Integer id) {
 		empresaRepository.deleteById(id);
 	}
+
 }
