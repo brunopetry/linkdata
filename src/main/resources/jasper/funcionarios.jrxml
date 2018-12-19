@@ -3,6 +3,9 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="FUNCIONARIOS" class="java.util.Collection">
+		<defaultValueExpression><![CDATA[$P{FUNCIONARIOS}]]></defaultValueExpression>
+	</parameter>
 	<field name="codigo" class="java.lang.String"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="cpf" class="java.lang.String"/>
@@ -57,7 +60,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="34" splitType="Stretch">
+		<band height="135" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="138" height="20" uuid="0a68b160-1de3-4e9e-a152-2cce4430534d"/>
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
@@ -73,6 +76,14 @@
 			<textField>
 				<reportElement x="414" y="0" width="138" height="20" uuid="0615ccda-a88b-451a-b1a2-3cf488e0e903"/>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="35" width="552" height="20" uuid="3d1b2cbb-5925-449b-98b3-c0399129ae27"/>
+				<textFieldExpression><![CDATA["teste 3 "+$P{FUNCIONARIOS}.getNome()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="67" y="85" width="314" height="20" uuid="68c80688-f7ff-4981-a112-4ef5c9407035"/>
+				<textFieldExpression><![CDATA[$P{FUNCIONARIOS}.getCpf()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
