@@ -22,7 +22,7 @@
   	<!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">MyApp</a>
+        <a class="navbar-brand js-scroll-trigger" href="/">MyApp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,12 +30,6 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#funcionarios">Funcionários</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#sobre">Sobre</a>
             </li>
           </ul>
         </div>
@@ -52,7 +46,7 @@
     <section id="home">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 mx-auto">
+          <div class="col-lg-12 mx-auto">
           	<div class="">
 				<strong>Cadastro de Funcionario</strong>
 			</div>
@@ -90,15 +84,6 @@
 								<input type="email" class="form-control input-sm" th:field="*{email}" placeholder="Informe o email" maxlength="100" required="required"/>
 							</div>
 						</div>
-<!-- 						<div class="form-group row"> -->
-<!-- 							<div class="col-lg-4" th:classappend="${#fields.hasErrors('empresa')}? 'has-error'"> -->
-<!-- 								<label>Empresa</label>  -->
-<!-- 								<select th:field="*{empresa}" class="form-control" required="required"> -->
-<!-- 									<option th:value="null" th:text="Selecione"></option> -->
-<!-- 								    <option th:each="empresa : ${empresas}" th:value="${empresa.codigo}" th:text="${empresa.nome}"></option> -->
-<!-- 								</select> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
 					</fieldset>
 				</div>
 				<div class="form-group row">

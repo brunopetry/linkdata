@@ -160,15 +160,10 @@ public class HomeController {
 	}
 
 	private JasperPrint exportPdfFile(String report, List<?> lista) throws JRException, IOException {
-
 		String path = resourceLoader.getResource("classpath:jasper/" + report + ".jrxml").getURI().getPath();
-
 		JasperReport jasperReport = JasperCompileManager.compileReport(path);
-
 		JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
-
 		JasperPrint print = JasperFillManager.fillReport(jasperReport, null, ds);
-
 		return print;
 	}
 
