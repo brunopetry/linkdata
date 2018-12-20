@@ -65,6 +65,8 @@ public class HomeController {
 	@PostMapping("/salvarEmpresa")
 	public ModelAndView salvarEmpresa(@Valid Empresa empresa, BindingResult result) {
 
+		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("/", "").replace("-", ""));
+
 		if (result.hasErrors()) {
 			return novaEmpresa(empresa);
 		}
@@ -116,6 +118,9 @@ public class HomeController {
 	@PostMapping("/salvarFuncionario/{codigoEmpresa}")
 	public ModelAndView salvarFuncionario(@PathVariable("codigoEmpresa") Integer codigoEmpresa,
 			@Valid Funcionario funcionario, BindingResult result) {
+
+		funcionario.setCpf(funcionario.getCpf().replace(".", "").replace("-", ""));
+		;
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("codigoEmpresa", codigoEmpresa);
