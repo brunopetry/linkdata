@@ -1,0 +1,36 @@
+Instruções para executar o projeto:
+
+
+IMPORTANTE:
+Utilizar JDK 8.
+
+
+1. Crie o diretório "C:\linkdata\workspace"
+
+2. Baixe o repositório, disponível no GITHUB "https://github.com/brunopetry/linkdata.git"
+
+3. Inicio o Mysql e execute o "script_criacao_banco_dados", disponível no repositório, para gerar o banco de dados
+
+4. Se necessário alterar usuario e senha do mysql no arquivo "application.properties"
+
+5. Importe o projeto maven
+
+6. Execute o maven install 
+
+7. Execute a class MyAppApplication -> "Run as Java Application"
+
+8. Acesse o endereço: http://localhost:8080/
+
+
+
+
+Tecnologias utilizadas:
+Java EE
+Spring boot
+JPA - Hibernate
+Thymeleaf
+Maven
+JasperReports
+Tomcat / Jetty
+MySql 
+IDE eclipse 
